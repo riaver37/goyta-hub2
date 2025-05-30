@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Startup - GOYTA-HUB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/goyta-hub-logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo-link" aria-label="Página Inicial do GOYTA-HUB">
+                <img src="img/goyta-hub-logo.png" alt="Logo GOYTA-HUB" class="logo-img">
+                <span class="site-name">GOYTA-HUB</span>
+            </a>
+            <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav>
+                <ul id="primary-navigation" class="primary-navigation" data-visible="false">
+                    <li class="nav-item has-submenu">
+                        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Sobre</a>
+                        <ul class="submenu">
+                            <li><a href="sobre.html">Sobre</a></li>
+                            <li><a href="ecossistema.html">Ecossistema</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-submenu">
+                        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Startup</a>
+                        <ul class="submenu">
+                            <li><a href="cadastro_startup.html">Cadastro de Novas Startup</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-submenu">
+                        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Eventos</a>
+                        <ul class="submenu">
+                            <li><a href="eventos_local.html">Local</a></li>
+                            <li><a href="eventos_regional.html">Regional</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="noticias.html" class="nav-link">Notícias</a></li>
+                    <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Cadastro de Novas Startups</h1>
+        <form action="#" method="POST" class="form-cadastro" enctype="multipart/form-data">
+            <h2>Preencha os dados da sua Startup</h2>
+
+            <div class="form-group">
+                <label for="startup-nome">Nome da Startup:</label>
+                <input type="text" id="startup-nome" name="startup_nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="startup-cnpj">CNPJ:</label>
+                <input type="text" id="startup-cnpj" name="startup_cnpj" required pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}" placeholder="00.000.000/0000-00">
+            </div>
+
+            <div class="form-group">
+                <label for="responsavel-nome">Nome do Responsável:</label>
+                <input type="text" id="responsavel-nome" name="responsavel_nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="responsavel-telefone">Telefone:</label>
+                <input type="tel" id="responsavel-telefone" name="responsavel_telefone" required placeholder="(00) 00000-0000">
+            </div>
+
+            <div class="form-group">
+                <label for="responsavel-email">E-mail:</label>
+                <input type="email" id="responsavel-email" name="responsavel_email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="startup-logo">Logo da Startup (PNG, JPG, max 2MB):</label>
+                <input type="file" id="startup-logo" name="startup_logo" accept="image/png, image/jpeg">
+            </div>
+
+            <div class="form-group">
+                <label for="startup-video">Link do Vídeo de Apresentação (YouTube, Vimeo, etc.):</label>
+                <input type="url" id="startup-video" name="startup_video" placeholder="https://www.youtube.com/watch?v=...">
+            </div>
+            
+            <!-- Se quisesse upload de vídeo direto (requer backend robusto):
+            <div class="form-group">
+                <label for="startup-video-upload">Upload de Vídeo (MP4, max 50MB):</label>
+                <input type="file" id="startup-video-upload" name="startup_video_upload" accept="video/mp4">
+            </div>
+            -->
+
+            <button type="submit" class="form-button">Cadastrar Startup</button>
+        </form>
+        
+        <a href="index.html" class="back-link">Voltar à Página Principal</a>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 GOYTA-HUB. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
