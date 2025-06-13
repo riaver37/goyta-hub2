@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - GOYTA HUB</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="site-header">
+        <div class="logo-container">
+             <a href="index.html" aria-label="Página inicial do GOYTA HUB">
+                <img src="images/goyta-hub-logo.png" alt="Logotipo GOYTA HUB: um foguete branco decolando dentro de um marcador de mapa azul.">
+            </a>
+            <a href="index.html" class="site-title-link" aria-label="Página inicial do GOYTA HUB"><h1 class="site-title">GOYTA HUB</h1></a>
+        </div>
+        <button class="menu-toggle-btn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="main-navigation">&#9776;</button>
+        <nav id="main-navigation" aria-label="Navegação principal">
+            <ul class="main-menu" id="main-menu-ul">
+                 <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sobre-submenu"><span>Sobre</span></button>
+                    <ul id="sobre-submenu" class="submenu" hidden>
+                        <li><a href="sobre-institucional.html">Sobre</a></li>
+                        <li><a href="ecossistema.html">Ecossistema</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="startups-submenu"><span>Startup</span></button>
+                    <ul id="startups-submenu" class="submenu" hidden>
+                        <li><a href="cadastro-startup.html">Cadastro de Startup</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="eventos-submenu"><span>Eventos</span></button>
+                    <ul id="eventos-submenu" class="submenu" hidden>
+                        <li><a href="eventos-locais.html">Local</a></li>
+                        <li><a href="eventos-regionais.html">Regional</a></li>
+                    </ul>
+                </li>
+                <li><a href="noticias.html">Notícias</a></li>
+                <li><a href="equipe-goyta-hub.html">Equipe Goyta Hub</a></li>
+                <li><a href="parceiros.html">Parceiros</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="content-section" aria-labelledby="page-title-sobre">
+            <h1 id="page-title-sobre">Nossa História e Propósito</h1>
+
+            <div class="text-content">
+                <p>A Goyta Hub nasceu de uma necessidade real identificada no ecossistema de inovação do Norte Fluminense. Durante o programa Mais Ciência, promovido pela Prefeitura de Campos dos Goytacazes, foi realizado um mapeamento que revelou a existência de cerca de 70 startups na região. Apesar da criatividade e do potencial inovador dessas iniciativas, muitas enfrentavam dificuldades para se tornarem visíveis e estabelecer conexões com investidores.</p>
+
+                <p>Foi nesse cenário que surgiu a ideia da Goyta Hub: uma plataforma digital de autocadastro pensada para conectar os principais atores do ecossistema de inovação local — startups, investidores, mentores, universidades e incubadoras.</p>
+
+                <p>A proposta é simples, mas poderosa: criar um ponto de encontro digital onde essas partes possam interagir, encontrar oportunidades e fortalecer a inovação regional.</p>
+
+                <p>Desenvolvida por um time engajado com o desenvolvimento econômico e tecnológico da região, a Goyta Hub se diferencia por seu foco territorial e por oferecer funcionalidades acessíveis e adaptadas à realidade das startups locais, com planos gratuitos e recursos premium. Desde seu início, conta com o apoio institucional da Tec Incubadora e outros parceiros estratégicos, sendo também reconhecida como uma ferramenta para estimular a economia criativa e a geração de valor na região.</p>
+
+                <p class="highlight-text">Mais do que uma plataforma, a Goyta Hub é um movimento coletivo para fazer da inovação um vetor de transformação regional.</p>
+            </div>
+            
+            <a href="index.html" class="back-to-main">Voltar à página principal</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="current-year"></span> GOYTA HUB. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

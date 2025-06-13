@@ -3,43 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - GOYTA-HUB</title>
+    <title>Sobre - GOYTA HUB</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/goyta-hub-logo.png" type="image/png">
+    <link rel="icon" href="img/GOYTA HUB-goyta-hub-logo.png" type="image/png">
 </head><body>
     <header>
         <div class="container header-content">
-            <a href="index.html" class="logo-link" aria-label="Página Inicial do GOYTA-HUB">
-                <img src="img/goyta-hub-logo.png" alt="Logo GOYTA-HUB" class="logo-img">
-                <span class="site-name">GOYTA-HUB</span>
+            <a href="index.html" class="logo-link" aria-label="Página Inicial do GOYTA HUB">
+                <img src="img/GOYTA HUB-goyta-hub-logo.png" alt="Logo GOYTA HUB" class="logo-img">
+                <span class="site-name">GOYTA HUB</span>
             </a>
             <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
                 <span class="hamburger"></span>
             </button>
-            <nav>
-                <ul id="primary-navigation" class="primary-navigation" data-visible="false">
-                    <li class="nav-item has-submenu">
-                        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Sobre</a>
-                        <ul class="submenu">
-                            <li><a href="sobre.html">Sobre</a></li>
+            <nav id="main-navigation" aria-label="Navegação principal">
+                <ul class="main-menu" id="main-menu-ul">
+                    <li>
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sobre-submenu">
+                            <span>Sobre</span>
+                        </button>
+                        <ul id="sobre-submenu" class="submenu" hidden>
+                            <li><a href="sobre-institucional.html">Sobre</a></li>
                             <li><a href="ecossistema.html">Ecossistema</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item has-submenu">
-                        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Startup</a>
-                        <ul class="submenu">
-                            <li><a href="cadastro_startup.html">Cadastro de Novas Startup</a></li>
+                    <li>
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="startups-submenu">
+                            <span>Startup</span>
+                        </button>
+                        <ul id="startups-submenu" class="submenu" hidden>
+                            <li><a href="cadastro-startup.html">Cadastro de Startup</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item has-submenu">
-                        <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Eventos</a>
-                        <ul class="submenu">
-                            <li><a href="eventos_local.html">Local</a></li>
-                            <li><a href="eventos_regional.html">Regional</a></li>
+                    <li>
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="eventos-submenu">
+                            <span>Eventos</span>
+                        </button>
+                        <ul id="eventos-submenu" class="submenu" hidden>
+                            <li><a href="eventos-locais.html">Local</a></li>
+                            <li><a href="eventos-regionais.html">Regional</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="noticias.html" class="nav-link">Notícias</a></li>
-                    <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+                    <li><a href="noticias.html">Notícias</a></li>
+                    <li><a href="equipe-GOYTA HUB.html">Equipe Goyta Hub</a></li>
+                    <li><a href="parceiros.html">Parceiros</a></li>
+                    <li><a href="contato.html">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -60,7 +68,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 GOYTA-HUB. Todos os direitos reservados.</p>
+            <p>&copy; 2023 GOYTA HUB. Todos os direitos reservados.</p>
         </div>
     </footer>
 

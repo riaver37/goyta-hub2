@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Startup - GOYTA HUB</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="site-header">
+        <div class="logo-container">
+             <a href="index.html" aria-label="Página inicial do GOYTA HUB">
+                <img src="images/goyta-hub-logo.png" alt="Logotipo GOYTA HUB: um foguete branco decolando dentro de um marcador de mapa azul.">
+            </a>
+            <a href="index.html" class="site-title-link" aria-label="Página inicial do GOYTA HUB"><h1 class="site-title">GOYTA HUB</h1></a>
+        </div>
+        <button class="menu-toggle-btn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="main-navigation">&#9776;</button>
+        <nav id="main-navigation" aria-label="Navegação principal">
+            <ul class="main-menu" id="main-menu-ul">
+                 <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sobre-submenu"><span>Sobre</span></button>
+                    <ul id="sobre-submenu" class="submenu" hidden>
+                        <li><a href="sobre-institucional.html">Sobre</a></li>
+                        <li><a href="ecossistema.html">Ecossistema</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="startups-submenu"><span>Startup</span></button>
+                    <ul id="startups-submenu" class="submenu" hidden>
+                        <li><a href="cadastro-startup.html">Cadastro de Startup</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="eventos-submenu"><span>Eventos</span></button>
+                    <ul id="eventos-submenu" class="submenu" hidden>
+                        <li><a href="eventos-locais.html">Local</a></li>
+                        <li><a href="eventos-regionais.html">Regional</a></li>
+                    </ul>
+                </li>
+                <li><a href="noticias.html">Notícias</a></li>
+                <li><a href="equipe-goyta-hub.html">Equipe Goyta Hub</a></li>
+                <li><a href="parceiros.html">Parceiros</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" class="form-page-container">
+        <h2 class="page-title">Cadastro de Nova Startup</h2>
+        <p>Preencha o formulário abaixo para registrar sua startup em nossa plataforma.</p>
+
+        <form action="#" method="POST" class="startup-form" id="startupRegistrationForm">
+            <fieldset>
+                <legend>Dados da Startup</legend>
+                <div class="form-group">
+                    <label for="startupName">Nome da Startup:*</label>
+                    <input type="text" id="startupName" name="startupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX">
+                </div>
+                <div class="form-group">
+                    <label for="foundationDate">Data de Fundação:</label>
+                    <input type="date" id="foundationDate" name="foundationDate">
+                </div>
+                <div class="form-group">
+                    <label for="logo">Logo (PNG, JPG - máx 2MB):</label>
+                    <input type="file" id="logo" name="logo" accept="image/png, image/jpeg">
+                </div>
+                 <div class="form-group">
+                    <label for="videoLink">Link do Vídeo de Apresentação (YouTube, Vimeo, etc.):</label>
+                    <input type="url" id="videoLink" name="videoLink" placeholder="https://">
+                </div>
+                <div class="form-group">
+                    <label for="pitch">Pitch da Startup (breve descrição):*</label>
+                    <textarea id="pitch" name="pitch" rows="5" required></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Fundador(es)</legend>
+                <!-- Repetir este bloco para múltiplos fundadores (pode ser adicionado dinamicamente com JS avançado) -->
+                <div class="founder-block">
+                    <h4>Fundador 1</h4>
+                    <div class="form-group">
+                        <label for="founder1Name">Nome Completo:*</label>
+                        <input type="text" id="founder1Name" name="founder1Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="founder1Phone">Telefone:*</label>
+                        <input type="tel" id="founder1Phone" name="founder1Phone" placeholder="(XX) XXXXX-XXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="founder1Email">E-mail:*</label>
+                        <input type="email" id="founder1Email" name="founder1Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="founder1Linkedin">LinkedIn:</label>
+                        <input type="url" id="founder1Linkedin" name="founder1Linkedin" placeholder="https://linkedin.com/in/...">
+                    </div>
+                </div>
+                <!-- Adicionar botões para adicionar/remover fundadores com JS seria ideal aqui -->
+            </fieldset>
+
+            <fieldset>
+                <legend>Detalhes da Operação</legend>
+                <div class="form-group">
+                    <label for="numCollaborators">Número de Colaboradores:*</label>
+                    <input type="number" id="numCollaborators" name="numCollaborators" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="startupStage">Estágio da Startup:*</label>
+                    <select id="startupStage" name="startupStage" required>
+                        <option value="">Selecione o estágio</option>
+                        <option value="ideacao">Ideação</option>
+                        <option value="validacao">Validação</option>
+                        <option value="tracao">Tração</option>
+                        <option value="crescimento">Crescimento</option>
+                        <option value="escala">Escala</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mainProductService">Produto e/ou Serviço Principal:*</label>
+                    <textarea id="mainProductService" name="mainProductService" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="municipio">Município da Startup:*</label>
+                    <select id="municipio" name="municipio" required>
+                        <option value="">Selecione o município</option>
+                        <option value="campos_goytacazes">Campos dos Goytacazes</option>
+                        <option value="macae">Macaé</option>
+                        <option value="quissama">Quissamã</option>
+                        <option value="sao_joao_barra">São João da Barra</option>
+                        <option value="sao_fidelis">São Fidélis</option>
+                        <option value="itaperuna">Itaperuna</option>
+                        <option value="bom_jesus_itabapoana">Bom Jesus do Itabapoana</option>
+                        <option value="outro_municipio">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado da Startup:*</label>
+                    <input type="text" id="estado" name="estado" required value="Rio de Janeiro"> <!-- Pode ser um select se houver muitos estados -->
+                </div>
+                <div class="form-group">
+                    <label for="targetAudience">Público-alvo:*</label>
+                    <select id="targetAudience" name="targetAudience" required>
+                        <option value="">Selecione o público</option>
+                        <option value="b2b">B2B</option>
+                        <option value="b2c">B2C</option>
+                        <option value="b2g">B2G</option>
+                        <option value="outro_publico">Outro</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Presença Online</legend>
+                <div class="form-group">
+                    <label for="website">Site da Startup:</label>
+                    <input type="url" id="website" name="website" placeholder="https://">
+                </div>
+                <div class="form-group">
+                    <label for="socialMedia">Redes Sociais (principal):</label>
+                    <input type="url" id="socialMedia" name="socialMedia" placeholder="https://instagram.com/...">
+                </div>
+                <div class="form-group">
+                    <label for="linkedinStartup">LinkedIn da Startup:</label>
+                    <input type="url" id="linkedinStartup" name="linkedinStartup" placeholder="https://linkedin.com/company/...">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Classificação e Vínculos</legend>
+                <div class="form-group">
+                    <label for="startupClassification">Classificação da Startup:*</label>
+                    <select id="startupClassification" name="startupClassification" required>
+                        <option value="">Selecione a classificação</option>
+                        <option value="fintech">1-Fintech</option>
+                        <option value="edtech">2-Edtechs</option>
+                        <option value="healthtech">3-Healthtechs</option>
+                        <option value="hrtech">4-HR Techs</option>
+                        <option value="foodtech">5-Foodtech</option>
+                        <option value="lawtech">6-Lawtech</option>
+                        <option value="proptech">7-Proptech</option>
+                        <option value="agrotech">8-Agrotech</option>
+                        <option value="energytech">9-Energytech</option>
+                        <option value="construtech">10-Construtech</option>
+                        <option value="insurtech">11-Insurtech</option>
+                        <option value="sporttech">12-Sporttech</option>
+                        <option value="govtech">13-Govtech</option>
+                        <option value="retailtech">14-Retailtech</option>
+                        <option value="adtech">15-Adtech</option>
+                        <option value="cleantech">17-Cleantech</option>
+                        <option value="nanotech">18-Nanotech</option>
+                        <option value="funtech">19-Funtech</option>
+                        <option value="fashiontech">20-Fashiontech</option>
+                        <option value="biotech">21-Biotech</option>
+                        <option value="indtech">22-Indtech</option>
+                        <option value="regtech">23-Regtech</option>
+                        <option value="outra_classificacao">24-Outra</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p class="form-group-title">Vinculada a habitat e/ou programa de inovação?</p>
+                    <div class="checkbox-group">
+                        <div><input type="checkbox" id="tecIncubadora" name="vinculos[]" value="tec_incubadora"><label for="tecIncubadora">Tec Incubadora</label></div>
+                        <div><input type="checkbox" id="poloIFF" name="vinculos[]" value="polo_iff"><label for="poloIFF">Pólo de Inovação do IFF</label></div>
+                        <div><input type="checkbox" id="startupCampos" name="vinculos[]" value="startup_campos"><label for="startupCampos">Startup Campos</label></div>
+                        <div><input type="checkbox" id="economiaCriativa" name="vinculos[]" value="economia_criativa"><label for="economiaCriativa">Economia Criativa</label></div>
+                        <div><input type="checkbox" id="faperj" name="vinculos[]" value="faperj"><label for="faperj">FAPERJ</label></div>
+                        <div><input type="checkbox" id="cnpq" name="vinculos[]" value="cnpq"><label for="cnpq">CNPq</label></div>
+                        <div><input type="checkbox" id="fundacaoWadhwani" name="vinculos[]" value="fundacao_wadhwani"><label for="fundacaoWadhwani">Fundação Wadhwani</label></div>
+                        <div><input type="checkbox" id="sebrae" name="vinculos[]" value="sebrae"><label for="sebrae">SEBRAE</label></div>
+                        <div><input type="checkbox" id="innovativa" name="vinculos[]" value="innovativa"><label for="innovativa">Innovativa</label></div>
+                        <div><input type="checkbox" id="outroVinculo" name="vinculos[]" value="outro_vinculo"><label for="outroVinculo">Outro</label></div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Termos e Condições</legend>
+                <div class="form-group lgpd-clause">
+                    <p><strong>Cláusula LGPD (Lei Geral de Proteção de Dados):</strong></p>
+                    <p>Ao submeter este formulário, você concorda que os dados fornecidos serão coletados e processados pelo GOYTA HUB para fins de cadastro na plataforma, comunicação sobre eventos, oportunidades e notícias relevantes ao ecossistema de inovação. Seus dados serão tratados com confidencialidade e segurança, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Você poderá solicitar a alteração ou exclusão dos seus dados a qualquer momento, entrando em contato conosco.</p>
+                    <div class="checkbox-group">
+                        <div>
+                            <input type="checkbox" id="lgpdConsent" name="lgpdConsent" value="aceito" required>
+                            <label for="lgpdConsent">Li e concordo com os termos e a Cláusula LGPD.*</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Enviar Cadastro</button>
+                <button type="reset" class="btn btn-secondary">Limpar Formulário</button>
+            </div>
+        </form>
+
+        <a href="index.html" class="back-to-main">Voltar à página principal</a>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="current-year"></span> GOYTA HUB. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        // Adicionar JS para validação ou funcionalidade extra do formulário aqui, se necessário.
+    </script>
+</body>
+</html>
