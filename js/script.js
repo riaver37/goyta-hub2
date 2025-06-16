@@ -1,88 +1,127 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const navToggle = document.querySelector('.nav-toggle');
-    const primaryNav = document.querySelector('.primary-navigation');
-    const navLinksWithSubmenu = document.querySelectorAll('.nav-item.has-submenu > a');
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    const mainMenu = document.querySelector('nav[aria-label="Navegação principal"]');
+    const menuToggleButton = document.querySelector('.menu-toggle-btn');
 
-    // Toggle do menu mobile (hamburger)
-    if (navToggle && primaryNav) {
-        navToggle.addEventListener('click', () => {
-            const isVisible = primaryNav.getAttribute('data-visible') === 'true';
-            primaryNav.setAttribute('data-visible', !isVisible);
-            navToggle.setAttribute('aria-expanded', !isVisible);
+    // Função para fechar todos os submenus abertos, exceto um específico
+    function closeAllSubmenus(exceptThisButton = null) {
+        dropdownToggles.forEach(btn => {
+            if (btn !== exceptThisButton) {
+                const submenuId = btn.getAttribute('aria-controls');
+                const submenu = document.getElementById(submenuId);
+                if (submenu) {
+                    btn.setAttribute('aria-expanded', 'false');
+                    submenu.setAttribute('hidden', '');
+                }
+            }
         });
     }
 
-    // Toggle dos submenus para acessibilidade e mobile
-    navLinksWithSubmenu.forEach(link => {
-        link.addEventListener('click', function (e) {
-            // Prevenir comportamento padrão se for apenas para abrir submenu
-            // Se o link principal tiver um href="#", previne o salto na página
-            if (this.getAttribute('href') === '#') {
-                e.preventDefault();
-            }
+    dropdownToggles.forEach(toggle => {
+        const submenuId = toggle.getAttribute('aria-controls');
+        const submenu = document.getElementById(submenuId);
+        const submenuItems = submenu ? Array.from(submenu.querySelectorAll('a')) : [];
 
-            const parentItem = this.parentElement;
-            const submenu = parentItem.querySelector('.submenu');
+        toggle.addEventListener('click', function (event) {
+            event.preventDefault(); // Previne comportamento padrão se for um link
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
 
-            // Fecha outros submenus abertos (opcional, mas bom para UX)
-            if (window.innerWidth <= 768) { // Apenas em mobile/tablet
-                 document.querySelectorAll('.nav-item.has-submenu.open').forEach(openItem => {
-                    if (openItem !== parentItem) {
-                        openItem.classList.remove('open');
-                        openItem.querySelector('a').setAttribute('aria-expanded', 'false');
+            // Fecha outros submenus (especialmente útil em desktop)
+            if (!isExpanded && window.innerWidth > 768) { // Apenas em desktop
+                closeAllSubmenus(this);
+            }
+
+            this.setAttribute('aria-expanded', String(!isExpanded));
+            submenu.toggleAttribute('hidden');
+
+            if (!isExpanded && submenuItems.length > 0 && window.innerWidth > 768) { // Foco no desktop
+                // Atraso pequeno para garantir que o submenu esteja visível antes do foco
+                setTimeout(() => submenuItems[0].focus(), 50);
+            } else if (isExpanded) {
+                // Se fechando, e o foco estava dentro, retorna ao botão
+                if (submenu.contains(document.activeElement)) {
+                    this.focus();
+                }
+            }
+        });
+
+        // Navegação por teclado dentro do submenu
+        if (submenuItems.length > 0) {
+            submenuItems.forEach((item, index) => {
+                item.addEventListener('keydown', function(event) {
+                    if (event.key === 'ArrowDown') {
+                        event.preventDefault();
+                        submenuItems[(index + 1) % submenuItems.length].focus();
+                    } else if (event.key === 'ArrowUp') {
+                        event.preventDefault();
+                        submenuItems[(index - 1 + submenuItems.length) % submenuItems.length].focus();
+                    } else if (event.key === 'Escape') {
+                        event.preventDefault();
+                        submenu.setAttribute('hidden', '');
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.focus();
+                    } else if (event.key === 'Tab' && !event.shiftKey && index === submenuItems.length - 1) {
+                        // Opcional: fechar submenu ao sair com Tab do último item
+                        // setTimeout(() => { // Pequeno delay para permitir o foco natural
+                        //     if (!submenu.contains(document.activeElement)) {
+                        //         submenu.setAttribute('hidden', '');
+                        //         toggle.setAttribute('aria-expanded', 'false');
+                        //     }
+                        // }, 0);
                     }
                 });
-            }
-
-
-            // Toggle o submenu atual
-            if (submenu) {
-                parentItem.classList.toggle('open'); // Para CSS poder estilizar o item pai
-                this.setAttribute('aria-expanded', !isExpanded);
-                // Não é mais necessário controlar display: block/none aqui pois
-                // .nav-item:hover .submenu e .nav-item.open .submenu no CSS cuidam disso.
-                // Em mobile, a classe 'open' é mais crucial.
-            }
-        });
-
-        // Adiciona listeners para teclado para abrir/fechar submenus
-        link.addEventListener('keydown', function(e) {
-            const parentItem = this.parentElement;
-            const submenu = parentItem.querySelector('.submenu');
-            if (!submenu) return;
-
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', !isExpanded);
-                parentItem.classList.toggle('open');
-                if (!isExpanded) {
-                    submenu.querySelector('a').focus(); // Foca no primeiro item do submenu
-                }
-            }
-        });
-
-        // Fechar submenu com Escape
-        const submenu = link.parentElement.querySelector('.submenu');
-        if (submenu) {
-            submenu.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    link.setAttribute('aria-expanded', 'false');
-                    link.parentElement.classList.remove('open');
-                    link.focus(); // Volta o foco para o link pai
-                }
             });
         }
+
+        // Fechar submenu com a tecla Escape quando o foco está no botão toggle
+        toggle.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                if (this.getAttribute('aria-expanded') === 'true') {
+                    event.preventDefault();
+                    submenu.setAttribute('hidden', '');
+                    this.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
     });
 
-    // Fechar menu mobile se clicar fora dele (opcional)
-    document.addEventListener('click', function(event) {
-        const isClickInsideNav = primaryNav.contains(event.target);
-        const isClickOnToggle = navToggle.contains(event.target);
-        if (!isClickInsideNav && !isClickOnToggle && primaryNav.getAttribute('data-visible') === 'true') {
-            primaryNav.setAttribute('data-visible', 'false');
-            navToggle.setAttribute('aria-expanded', 'false');
+    // Fechar submenus se clicar fora deles (apenas em desktop)
+    document.addEventListener('click', function (event) {
+        if (window.innerWidth <= 768) return; // Não aplicar em mobile onde o comportamento é diferente
+
+        let isClickInsideMenu = false;
+        let clickedToggle = null;
+
+        dropdownToggles.forEach(toggle => {
+            const submenu = document.getElementById(toggle.getAttribute('aria-controls'));
+            if (toggle.contains(event.target) || (submenu && submenu.contains(event.target))) {
+                isClickInsideMenu = true;
+                if (toggle.contains(event.target)) clickedToggle = toggle;
+            }
+        });
+
+        if (!isClickInsideMenu) {
+            closeAllSubmenus();
+        } else if (clickedToggle && clickedToggle.getAttribute('aria-expanded') === 'true') {
+            // Se clicou em um toggle que já estava aberto, não feche os outros
+            // A lógica do toggle individual já cuidará disso
         }
     });
+
+    // Toggle do menu hambúrguer
+    if (menuToggleButton && mainMenu) {
+        menuToggleButton.setAttribute('aria-expanded', 'false');
+        menuToggleButton.setAttribute('aria-controls', 'main-menu-ul'); // ID da UL principal
+
+        menuToggleButton.addEventListener('click', function() {
+            const isExpanded = mainMenu.classList.contains('active');
+            mainMenu.classList.toggle('active');
+            this.setAttribute('aria-expanded', String(!isExpanded));
+            if (!isExpanded) {
+                // Opcional: focar no primeiro item do menu ao abrir
+                const firstMenuItem = mainMenu.querySelector('ul.main-menu > li > a, ul.main-menu > li > button');
+                if (firstMenuItem) setTimeout(() => firstMenuItem.focus(), 50);
+            }
+        });
+    }
 });
