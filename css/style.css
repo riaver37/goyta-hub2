@@ -1,3 +1,492 @@
+/* Reset básico e estilos gerais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff; /* Fundo branco */
+    color: #00008B; /* Azul forte (DarkBlue) */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a, button {
+    color: #00008B; /* Azul forte */
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Estilos para o link "Pular para o conteúdo" */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -999;
+    background-color: #0000CD; /* MediumBlue para contraste */
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.skip-link:focus {
+    left: 10px;
+    top: 10px;
+    width: auto;
+    height: auto;
+    overflow: auto;
+    z-index: 10000;
+}
+
+/* Cabeçalho */
+.site-header {
+    background-color: #ffffff;
+    padding: 15px 5%; /* Usar % para responsividade */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f0f0; /* Linha sutil */
+    position: sticky; /* Faz o header ficar fixo no topo ao rolar */
+    top: 0;
+    z-index: 999; /* Para ficar acima do conteúdo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.site-header .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.site-header .logo-container img {
+    height: 50px; /* Ajuste conforme necessário */
+    margin-right: 15px;
+}
+
+.site-header .logo-container .site-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 0;
+    color: #00008B;
+}
+
+
+/* Navegação Principal - Estilo Ninnahub */
+nav[aria-label="Navegação principal"] {
+    display: flex;
+    justify-content: center; /* Centraliza no header se não houver espaço no space-between */
+}
+
+nav ul.main-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul.main-menu > li {
+    position: relative; /* Para posicionamento do submenu */
+    margin: 0 5px; /* Espaçamento menor entre itens principais */
+}
+
+nav ul.main-menu > li > a,
+nav ul.main-menu > li > button.dropdown-toggle {
+    display: block;
+    padding: 15px 20px; /* Mais padding para área de clique maior */
+    font-size: 1.1em;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    position: relative; /* Para o pseudo-elemento ::after */
+    overflow: hidden; /* Para o efeito do ::after */
+    white-space: nowrap; /* Evita quebra de linha nos itens do menu */
+}
+
+/* Linha inferior estilo Ninnahub */
+nav ul.main-menu > li > a::after,
+nav ul.main-menu > li > button.dropdown-toggle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #0000CD; /* MediumBlue, um pouco mais claro para destaque */
+    transform: translateX(-101%);
+    transition: transform 0.3s ease-in-out;
+}
+
+nav ul.main-menu > li > a:hover::after,
+nav ul.main-menu > li > a:focus::after,
+nav ul.main-menu > li > button.dropdown-toggle:hover::after,
+nav ul.main-menu > li > button.dropdown-toggle:focus::after,
+nav ul.main-menu > li > button.dropdown-toggle[aria-expanded="true"]::after {
+    transform: translateX(0);
+}
+
+
+/* Estilos de foco visíveis */
+nav ul.main-menu > li > a:focus,
+nav ul.main-menu > li > button.dropdown-toggle:focus {
+    outline: 2px solid #0000CD;
+    outline-offset: -2px; /* Foco interno para não quebrar layout */
+    /* background-color: #e0e0ff; Não é necessário com o ::after */
+}
+
+/* Submenus */
+ul.submenu {
+    list-style: none;
+    padding: 10px 0; /* Padding vertical no container do submenu */
+    margin: 0;
+    position: absolute;
+    top: 100%; /* Abaixo do item pai */
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    min-width: 220px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 0 0 4px 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+ul.submenu[hidden] { /* JS vai usar 'hidden', mas CSS pode usar classes ou atributos para animação */
+    /* display: none; -- substituído pela animação com opacity e visibility */
+}
+
+nav ul.main-menu > li > button.dropdown-toggle[aria-expanded="true"] + ul.submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+ul.submenu li a {
+    padding: 10px 20px;
+    display: block;
+    white-space: nowrap;
+    font-size: 1em;
+    color: #00008B;
+}
+
+ul.submenu li a:hover,
+ul.submenu li a:focus {
+    background-color: #eef2f7; /* Azul bem clarinho no hover */
+    color: #0000CD; /* Azul médio no hover */
+    outline: none; /* Se o link não tiver underline, o foco padrão do navegador pode ser suficiente */
+}
+ul.submenu li a:focus {
+    background-color: #dde5f0; /* Um pouco mais escuro no foco */
+    outline: 1px dashed #00008B; /* Adiciona um outline para clareza no foco */
+    outline-offset: -1px;
+}
+
+
+/* Indicador de dropdown (seta) */
+button.dropdown-toggle > span::after { /* Span para aplicar o estilo no texto, não no botão todo */
+    content: ' ▼';
+    font-size: 0.7em;
+    margin-left: 5px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+button.dropdown-toggle[aria-expanded="true"] > span::after {
+    transform: rotate(180deg);
+}
+
+/* Conteúdo principal */
+#main-content {
+    padding: 30px 5%;
+    min-height: 60vh;
+}
+
+#main-content h2, #main-content h3 {
+    color: #00008B;
+}
+#main-content section {
+    margin-bottom: 40px;
+    padding-top: 60px; /* Espaço para o header fixo */
+    margin-top: -60px; /* Compensa o padding-top para ancoragem correta */
+}
+
+/* Rodapé */
+.site-footer {
+    text-align: center;
+    padding: 25px 5%;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 40px;
+    background-color: #f9f9f9;
+}
+
+/* Botão Voltar (para subpáginas) */
+.back-to-main {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #00008B;
+    color: #ffffff;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.back-to-main:hover, .back-to-main:focus {
+    background-color: #0000CD; /* MediumBlue */
+    color: #ffffff;
+    outline: 2px solid #000050; /* Azul mais escuro para foco */
+    outline-offset: 2px;
+}
+
+/* Menu Hambúrguer para telas menores */
+.menu-toggle-btn {
+    display: none; /* Oculto por padrão */
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #00008B;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.menu-toggle-btn:focus {
+    outline: 2px solid #0000CD;
+    outline-offset: 2px;
+}
+
+
+/* Responsividade */
+@media (max-width: 992px) { /* Ajuste este breakpoint conforme necessário */
+    .site-header {
+        padding: 15px 3%;
+    }
+    .site-header .logo-container .site-title {
+        font-size: 1.5em;
+    }
+    nav ul.main-menu > li > a,
+    nav ul.main-menu > li > button.dropdown-toggle {
+        padding: 15px 10px; /* Menos padding horizontal */
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle-btn {
+        display: block; /* Mostra o botão hambúrguer */
+        order: 1; /* Coloca o botão à direita se o logo estiver no centro */
+    }
+
+    nav[aria-label="Navegação principal"] {
+        order: 2; /* Ordem do flex container */
+        position: absolute;
+        top: 100%; /* Abaixo do header */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        max-height: 0; /* Para animação de abertura */
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+
+    nav[aria-label="Navegação principal"].active {
+        max-height: 500px; /* Altura suficiente para o menu, ajuste se necessário */
+        border-top: 1px solid #f0f0f0;
+    }
+
+    nav ul.main-menu {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        width: 100%;
+        align-items: flex-start; /* Alinha itens à esquerda */
+    }
+
+    nav ul.main-menu > li {
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0; /* Divisor entre itens */
+    }
+     nav ul.main-menu > li:last-child {
+        border-bottom: none;
+    }
+
+
+    nav ul.main-menu > li > a,
+    nav ul.main-menu > li > button.dropdown-toggle {
+        width: 100%;
+        padding: 15px 20px; /* Padding consistente */
+        text-align: left; /* Alinha texto à esquerda */
+    }
+    
+    nav ul.main-menu > li > a::after,
+    nav ul.main-menu > li > button.dropdown-toggle::after {
+        display: none; /* Remove o efeito de linha no mobile, se desejar */
+    }
+
+    ul.submenu {
+        position: static; /* Submenu flui normalmente no mobile */
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        padding-left: 20px; /* Indentação para subitens */
+        background-color: #f9f9f9; /* Cor de fundo levemente diferente */
+        opacity: 1; /* Sempre visível quando o pai está expandido */
+        visibility: visible;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+    
+    nav ul.main-menu > li > button.dropdown-toggle[aria-expanded="true"] + ul.submenu {
+         max-height: 300px; /* Altura para o submenu expandir */
+    }
+
+    ul.submenu li a {
+        padding: 10px 20px;
+    }
+
+    /* Conteúdo principal precisa de mais padding-top por causa do header fixo */
+     #main-content section {
+        padding-top: 80px; /* Ajuste conforme a altura do seu header mobile */
+        margin-top: -80px;
+    }
+}
+
+/*revair adicionou por ultimo a parte acima, para voltar menu horizontal */
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    const mainMenu = document.querySelector('nav[aria-label="Navegação principal"]');
+    const menuToggleButton = document.querySelector('.menu-toggle-btn');
+
+    // Função para fechar todos os submenus abertos, exceto um específico
+    function closeAllSubmenus(exceptThisButton = null) {
+        dropdownToggles.forEach(btn => {
+            if (btn !== exceptThisButton) {
+                const submenuId = btn.getAttribute('aria-controls');
+                const submenu = document.getElementById(submenuId);
+                if (submenu) {
+                    btn.setAttribute('aria-expanded', 'false');
+                    submenu.setAttribute('hidden', '');
+                }
+            }
+        });
+    }  
+
+    dropdownToggles.forEach(toggle => {
+        const submenuId = toggle.getAttribute('aria-controls');
+        const submenu = document.getElementById(submenuId);
+        const submenuItems = submenu ? Array.from(submenu.querySelectorAll('a')) : [];
+
+        toggle.addEventListener('click', function (event) {
+            event.preventDefault(); // Previne comportamento padrão se for um link
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+            // Fecha outros submenus (especialmente útil em desktop)
+            if (!isExpanded && window.innerWidth > 768) { // Apenas em desktop
+                closeAllSubmenus(this);
+            }
+
+            this.setAttribute('aria-expanded', String(!isExpanded));
+            submenu.toggleAttribute('hidden');
+
+            if (!isExpanded && submenuItems.length > 0 && window.innerWidth > 768) { // Foco no desktop
+                // Atraso pequeno para garantir que o submenu esteja visível antes do foco
+                setTimeout(() => submenuItems[0].focus(), 50);
+            } else if (isExpanded) {
+                // Se fechando, e o foco estava dentro, retorna ao botão
+                if (submenu.contains(document.activeElement)) {
+                    this.focus();
+                }
+            }
+        });
+
+        // Navegação por teclado dentro do submenu
+        if (submenuItems.length > 0) {
+            submenuItems.forEach((item, index) => {
+                item.addEventListener('keydown', function(event) {
+                    if (event.key === 'ArrowDown') {
+                        event.preventDefault();
+                        submenuItems[(index + 1) % submenuItems.length].focus();
+                    } else if (event.key === 'ArrowUp') {
+                        event.preventDefault();
+                        submenuItems[(index - 1 + submenuItems.length) % submenuItems.length].focus();
+                    } else if (event.key === 'Escape') {
+                        event.preventDefault();
+                        submenu.setAttribute('hidden', '');
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.focus();
+                    } else if (event.key === 'Tab' && !event.shiftKey && index === submenuItems.length - 1) {
+                        // Opcional: fechar submenu ao sair com Tab do último item
+                        // setTimeout(() => { // Pequeno delay para permitir o foco natural
+                        //     if (!submenu.contains(document.activeElement)) {
+                        //         submenu.setAttribute('hidden', '');
+                        //         toggle.setAttribute('aria-expanded', 'false');
+                        //     }
+                        // }, 0);
+                    }
+                });
+            });
+        }
+
+        // Fechar submenu com a tecla Escape quando o foco está no botão toggle
+        toggle.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                if (this.getAttribute('aria-expanded') === 'true') {
+                    event.preventDefault();
+                    submenu.setAttribute('hidden', '');
+                    this.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    });
+
+    // Fechar submenus se clicar fora deles (apenas em desktop)
+    document.addEventListener('click', function (event) {
+        if (window.innerWidth <= 768) return; // Não aplicar em mobile onde o comportamento é diferente
+
+        let isClickInsideMenu = false;
+        let clickedToggle = null;
+
+        dropdownToggles.forEach(toggle => {
+            const submenu = document.getElementById(toggle.getAttribute('aria-controls'));
+            if (toggle.contains(event.target) || (submenu && submenu.contains(event.target))) {
+                isClickInsideMenu = true;
+                if (toggle.contains(event.target)) clickedToggle = toggle;
+            }
+        });
+
+        if (!isClickInsideMenu) {
+            closeAllSubmenus();
+        } else if (clickedToggle && clickedToggle.getAttribute('aria-expanded') === 'true') {
+            // Se clicou em um toggle que já estava aberto, não feche os outros
+            // A lógica do toggle individual já cuidará disso
+        }
+    });
+
+    // Toggle do menu hambúrguer
+    if (menuToggleButton && mainMenu) {
+        menuToggleButton.setAttribute('aria-expanded', 'false');
+        menuToggleButton.setAttribute('aria-controls', 'main-menu-ul'); // ID da UL principal
+
+        menuToggleButton.addEventListener('click', function() {
+            const isExpanded = mainMenu.classList.contains('active');
+            mainMenu.classList.toggle('active');
+            this.setAttribute('aria-expanded', String(!isExpanded));
+            if (!isExpanded) {
+                // Opcional: focar no primeiro item do menu ao abrir
+                const firstMenuItem = mainMenu.querySelector('ul.main-menu > li > a, ul.main-menu > li > button');
+                if (firstMenuItem) setTimeout(() => firstMenuItem.focus(), 50);
+            }
+        });
+    }
+});
+
+
 /* ... (Mantenha todo o CSS anterior para o menu e header) ... */
 
 /* Hero Section na Index */
@@ -353,5 +842,160 @@
     }
     .highlight-text {
         padding: 10px;
+    }
+}
+/* ... (todo o CSS anterior) ... */
+
+/* Estilos para a Página de Parceiros */
+.partners-page .intro-parceiros {
+    text-align: center;
+    font-size: 1.15em;
+    margin-bottom: 30px;
+    color: #333; /* Cor mais suave para texto introdutório */
+    max-width: 700px; /* Limita largura do texto introdutório */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.partners-grid {
+    display: grid;
+    /* 
+       Cria colunas responsivas:
+       - Tenta encaixar o máximo de colunas com largura mínima de 180px.
+       - Cada coluna ocupará uma fração igual do espaço disponível (1fr).
+    */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px; /* Espaçamento entre os logos */
+    padding: 20px 0; /* Espaçamento vertical em torno da grade */
+}
+
+.partner-item {
+    display: flex; /* Para centralizar a imagem dentro do item */
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; /* Um fundo muito sutil para cada item */
+    border: 1px solid #e0e0e0; /* Borda clara */
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 20px;
+    min-height: 120px; /* Altura mínima para garantir algum alinhamento visual */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.partner-item:hover,
+.partner-item:focus-within { /* Estilo quando um elemento dentro dele (como um link) está focado */
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.partner-item img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    max-height: 80px; /* Limita a altura máxima da logo para uniformidade */
+    height: auto;     /* Mantém a proporção da imagem */
+    object-fit: contain; /* Garante que toda a imagem seja visível, sem cortar, dentro das dimensões */
+}
+
+/* Se as logos forem links, adicione um estilo de foco explícito para o link */
+.partner-item a:focus {
+    outline: 2px solid #0000CD; /* Azul médio para o foco */
+    outline-offset: 3px; /* Espaço entre o item e o outline */
+    border-radius: 6px; /* Para o outline acompanhar o border-radius do item se o link preencher */
+}
+.partner-item a { /* Para remover o sublinhado padrão se for link */
+    display: block; /* Faz o link ocupar o espaço do item */
+    text-decoration: none;
+}
+
+
+/* Responsividade para a grade de parceiros */
+@media (max-width: 480px) {
+    .partners-grid {
+        /* Em telas muito pequenas, talvez uma ou duas colunas */
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+    .partner-item {
+        padding: 15px;
+        min-height: 100px;
+    }
+    .partner-item img {
+        max-height: 60px;
+    }
+}
+/* relativo ao site da Equipe */
+/* ... (todo o CSS anterior) ... */
+
+/* Estilos para a Página da Equipe */
+.team-page .intro-equipe {
+    text-align: center;
+    font-size: 1.15em;
+    margin-bottom: 35px;
+    color: #333;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas responsivas */
+    gap: 30px; /* Espaçamento entre os membros */
+    padding: 20px 0;
+}
+
+.team-member {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Para garantir que a imagem não vaze se tiver cantos arredondados diferentes */
+    text-align: center;
+    padding-bottom: 20px; /* Espaço abaixo das informações */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.team-member:hover,
+.team-member:focus { /* Estilo de foco para o card inteiro */
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    outline: 2px solid #0000CD; /* Outline para o card focado */
+    outline-offset: 2px;
+}
+
+.team-member img {
+    width: 100%; /* Faz a imagem ocupar toda a largura do card */
+    height: 260px; /* Altura fixa para as fotos, ajuste conforme necessário */
+    object-fit: cover; /* Cobre a área, pode cortar partes da imagem para preencher */
+                      /* Alternativa: object-fit: contain; (mostra toda a imagem, pode deixar espaços) */
+    object-position: center top; /* Tenta centralizar o rosto se 'cover' for usado */
+    display: block; /* Remove espaço extra abaixo da imagem */
+    margin-bottom: 15px; /* Espaço entre a foto e as informações */
+}
+
+.member-info {
+    padding: 0 15px; /* Espaçamento lateral para as infos */
+}
+
+.member-name {
+    font-size: 1.3em;
+    color: #00008B; /* Azul forte para o nome */
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.member-role {
+    font-size: 1em;
+    color: #555; /* Cinza escuro para o cargo */
+    margin-top: 0;
+    font-style: italic;
+}
+
+/* Responsividade para a grade da equipe */
+@media (max-width: 576px) { /* Breakpoint para telas menores */
+    .team-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas muito pequenas */
+        gap: 20px;
+    }
+    .team-member img {
+        height: 280px; /* Pode aumentar um pouco a altura se for 1 coluna */
     }
 }
