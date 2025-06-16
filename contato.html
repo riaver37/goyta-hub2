@@ -5,12 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre - GOYTA-HUB</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/goyta-hub-goyta-hub-logo.png" type="image/png">
+    <link rel="icon" href="images/goyta-hub-logo.png" type="image/png">
 </head><body>
-    <header>
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html" aria-label="Página inicial do GOYTA HUB">
+                <img src="images/goyta-hub-logo.png" alt="Logotipo GOYTA HUB: um foguete branco decolando dentro de um marcador de mapa azul.">
+            </a>
+            <a href="index.html" class="site-title-link" aria-label="Página inicial do GOYTA HUB"><h1 class="site-title">GOYTA HUB</h1></a>
+        </div>
+
+        <button class="menu-toggle-btn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="main-navigation">
+            ☰ <!-- Símbolo do Hambúrguer -->
+        </button>
+
+        <nav id="main-navigation" aria-label="Navegação principal">
+            <ul class="main-menu" id="main-menu-ul">
+                <!-- Seus LIs aqui, como: -->
+                <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sobre-submenu">
+                        <span>Sobre</span>
+                    </button>
+                    <ul id="sobre-submenu" class="submenu" hidden>
+                        <li><a href="sobre-institucional.html">Sobre</a></li>
+                        <li><a href="ecossistema.html">Ecossistema</a></li>
+                    </ul>
+                    <li>
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="startups-submenu">
+                            <span>Startup</span>
+                        </button>
+                        <ul id="startups-submenu" class="submenu" hidden>
+                            <li><a href="cadastro-startup.html">Cadastro de Startup</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="eventos-submenu">
+                            <span>Eventos</span>
+                        </button>
+                        <ul id="eventos-submenu" class="submenu" hidden>
+                            <li><a href="eventos-locais.html">Local</a></li>
+                            <li><a href="eventos-regionais.html">Regional</a></li>
+                        </ul>
+                    </li>
+                                      
+                </li>
+               <li><a href="noticias.html">Notícias</a></li> 
+                <li><a href="equipe.html">Equipe</a></li>
+                <li><a href="parceiros.html">Parceiros</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    
+    </header>
+   <!-- <header>
         <div class="container header-content">
             <a href="index.html" class="logo-link" aria-label="Página Inicial do GOYTA HUB">
-                <img src="img/goyta-hub-goyta-hub-logo.png" alt="Logo GOYTA-HUB" class="logo-img">
+                <img src="img/goyta-hub-goyta.png" alt="Logo GOYTA HUB" class="logo-img">
                 <span class="site-name">GOYTA HUB</span>
             </a>
             <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
@@ -45,22 +95,31 @@
                         </ul>
                     </li>
                     <li><a href="noticias.html">Notícias</a></li>
-                    <li><a href="equipe-goyta-hub.html">Equipe Goyta Hub</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
                     <li><a href="parceiros.html">Parceiros</a></li>
                     <li><a href="contato.html">Contato</a></li>
                 </ul>
             </nav>
-        </div>
+        </div> -->
     </header>
 
     <main class="container">
-        <h1>Contatos GOYTA HUB</h1>
-        <p>  Túlio Baita </p>
-        <P>tuliobaitareis@gmail.com</P>
-        <P>22-999717138</P>
-        <P>Linkedin: https://www.linkedin.com/in/tuliobaita/Informações</P>
-        
-        
+        <section class="content-section" aria-labelledby="page-title-sobre">
+            <h1 id="page-title-sobre">Contatos</section</h1>
+
+            <div class="text-content">
+                <p>  Túlio Baita </p>
+                <P>tuliobaitareis@gmail.com</P>
+                <P>22-999717138</P>
+                <P>Linkedin: https://www.linkedin.com/in/tuliobaita/Informações</P> <br>
+                 <p> </p> 
+                <p>Revair Mendes Lourenço</p>
+                <p>rmendes37@gmail.com</p>
+                <p>22-99824-0195</p>
+                                                     
+            </div>
+         
+              
         <a href="index.html" class="back-link">Voltar à Página Principal</a>
     </main>
 

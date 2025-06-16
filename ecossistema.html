@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - GOYTA HUB</title>
+    <title>Sobre Nós - GOYTA HUB</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/GOYTA HUB-goyta-hub-logo.png" type="image/png">
-</head><body>
-    <header>
-        <div class="container header-content">
-            <a href="index.html" class="logo-link" aria-label="Página Inicial do GOYTA HUB">
-                <img src="img/GOYTA HUB-goyta-hub-logo.png" alt="Logo GOYTA HUB" class="logo-img">
-                <span class="site-name">GOYTA HUB</span>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="site-header">
+        <div class="logo-container">
+            <a href="index.html" aria-label="Página inicial do GOYTA HUB">
+                <img src="images/goyta-hub-logo.png" alt="Logotipo GOYTA HUB: um foguete branco decolando dentro de um marcador de mapa azul.">
             </a>
-            <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-navigation">
-                <span class="hamburger"></span>
-            </button>
-            <nav id="main-navigation" aria-label="Navegação principal">
-                <ul class="main-menu" id="main-menu-ul">
-                    <li>
-                        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sobre-submenu">
-                            <span>Sobre</span>
-                        </button>
-                        <ul id="sobre-submenu" class="submenu" hidden>
-                            <li><a href="sobre-institucional.html">Sobre</a></li>
-                            <li><a href="ecossistema.html">Ecossistema</a></li>
-                        </ul>
-                    </li>
+            <a href="index.html" class="site-title-link" aria-label="Página inicial do GOYTA HUB"><h1 class="site-title">GOYTA HUB</h1></a>
+        </div>
+
+        <button class="menu-toggle-btn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="main-navigation">
+            ☰ <!-- Símbolo do Hambúrguer -->
+        </button>
+
+        <nav id="main-navigation" aria-label="Navegação principal">
+            <ul class="main-menu" id="main-menu-ul">
+                <!-- Seus LIs aqui, como: -->
+                <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sobre-submenu">
+                        <span>Sobre</span>
+                    </button>
+                    <ul id="sobre-submenu" class="submenu" hidden>
+                        <li><a href="sobre-institucional.html">Sobre</a></li>
+                        <li><a href="ecossistema.html">Ecossistema</a></li>
+                    </ul>
                     <li>
                         <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="startups-submenu">
                             <span>Startup</span>
@@ -44,64 +49,84 @@
                             <li><a href="eventos-regionais.html">Regional</a></li>
                         </ul>
                     </li>
-                    <li><a href="noticias.html">Notícias</a></li>
-                    <li><a href="equipe-GOYTA HUB.html">Equipe Goyta Hub</a></li>
-                    <li><a href="parceiros.html">Parceiros</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                </ul>
-            </nav>
+                                      
+                </li>
+               <li><a href="noticias.html">Notícias</a></li> 
+                <li><a href="equipe.html">Equipe</a></li>
+                <li><a href="parceiros.html">Parceiros</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+
+
+
+        <!--<div class="logo-container">
+             <a href="index.html" aria-label="Página inicial do GOYTA HUB">
+                <img src="images/goyta-hub-logo.png" alt="Logotipo GOYTA HUB: um foguete branco decolando dentro de um marcador de mapa azul.">
+            </a>
+            <a href="index.html" class="site-title-link" aria-label="Página inicial do GOYTA HUB"><h1 class="site-title">GOYTA HUB</h1></a>
         </div>
+        <button class="menu-toggle-btn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="main-navigation">&#9776;</button>
+        <nav id="main-navigation" aria-label="Navegação principal">
+            <ul class="main-menu" id="main-menu-ul">
+                 <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sobre-submenu"><span>Sobre</span></button>
+                    <ul id="sobre-submenu" class="submenu" hidden>
+                        <li><a href="sobre-institucional.html">Sobre</a></li>
+                        <li><a href="ecossistema.html">Ecossistema</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="startups-submenu"><span>Startup</span></button>
+                    <ul id="startups-submenu" class="submenu" hidden>
+                        <li><a href="cadastro-startup.html">Cadastro de Startup</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="eventos-submenu"><span>Eventos</span></button>
+                    <ul id="eventos-submenu" class="submenu" hidden>
+                        <li><a href="eventos-locais.html">Local</a></li>
+                        <li><a href="eventos-regionais.html">Regional</a></li>
+                    </ul>
+                </li>
+                <li><a href="noticias.html">Notícias</a></li>
+                <li><a href="equipe.html">Equipe</a></li>
+                <li><a href="parceiros.html">Parceiros</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav> -->
     </header>
 
     <main id="main-content">
         <section class="content-section" aria-labelledby="page-title-sobre">
-            <h1 id="page-title-sobre">Ecossistema </h1>
+            <h1 id="page-title-sobre">Ecossistema</h1>
 
             <div class="text-content">
-                <p> O ecossistema de inovação do Norte Fluminense teve início em 2008, com
+                <p>O ecossistema de inovação do Norte Fluminense teve início em 2008, com
                     a criação da Tec Incubadora. Naquele momento, foram dados os primeiros
                     passos rumo à consolidação do modelo da Hélice Tríplice — Universidade,
-                    Governo e Empresa — como base para o desenvolvimento regional. 
-                    </p>
+                    Governo e Empresa — como base para o desenvolvimento regional.</p>
 
-                <p> Hoje, o ecossistema encontra-se em plena expansão, apoiado por políticas públicas municipais e estaduais, polos de inovação consolidados e um número crescente de startups.</p>
+                <p>Hoje, o ecossistema encontra-se em plena expansão, apoiado por políticas públicas municipais e estaduais, polos de inovação consolidados e um número crescente de startups.</p>
 
-                <p> Nesse cenário, a Goyta Hub surge como uma plataforma digital para
-                    somar forças e apoiar o fortalecimento do ecossistema fluminense, conectando startups, investidores, mentores e instituições, promovendo visibilidade, parcerias estratégicas e acelerando o crescimento da inovação regional.
-                    </p>
+                <p>Nesse cenário, a Goyta Hub surge como uma plataforma digital para somar forças e apoiar o fortalecimento do ecossistema fluminense, conectando startups, investidores, mentores e instituições, promovendo visibilidade, parcerias estratégicas e acelerando o crescimento da inovação regional.</p>
 
                 
-                <p class="highlight-text">Mais do que uma plataforma, a Goyta Hub é um movimento coletivo para fazer da inovação um vetor de transformação regional.</p>
+                <p class="highlight-text">O ecossistema de inovação é como uma floresta vibrante, onde diferentes espécies de atores coexistem e se fortalecem mutuamente</p>
             </div>
             
             <a href="index.html" class="back-to-main">Voltar à página principal</a>
         </section>
     </main>
 
-    <!--<main class="container"> 
-        <h1>Ecossistema </h1>
-        <p>Ecossistema GOYTA HUB...</p>
-        <p>O ecossistema de inovação do Norte Fluminense teve início em 2008, com <br>
-           a criação da Tec Incubadora. Naquele momento, foram dados os primeiros <br>
-           passos rumo à consolidação do modelo da Hélice Tríplice — Universidade, <br>
-           Governo e Empresa — como base para o desenvolvimento regional. Hoje, o <br>
-           ecossistema encontra-se em plena expansão, apoiado por políticas públicas<br>
-           municipais e estaduais, polos de inovação consolidados e um número crescente<br>
-           de startups. Nesse cenário, a Goyta Hub surge como uma plataforma digital para<br>
-           somar forças e apoiar o fortalecimento do ecossistema fluminense, conectando <br>
-           startups, investidores, mentores e instituições, promovendo visibilidade, parcerias<br>
-           estratégicas e acelerando o crescimento da inovação regional. <br>
-
-
-        
-        <a href="index.html" class="back-link">Voltar à Página Principal</a>
-    </main> -->  
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 GOYTA HUB. Todos os direitos reservados.</p>
-        </div>
+    <footer class="site-footer">
+        <p>&copy; <span id="current-year"></span> GOYTA HUB. Todos os direitos reservados.</p>
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
