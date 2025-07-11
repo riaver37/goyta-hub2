@@ -125,3 +125,72 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+//<!-- Coloque este script antes de </body> no seu HTML -->
+//<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const estadoSelect = document.getElementById('estado');
+    const municipioSelect = document.getElementById('municipio');
+
+    // URL da API do IBGE para estados
+    const urlEstados = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome';
+
+    // 1. Carrega e popula o select de estados
+    fetch(urlEstados)
+        .then(res => res.json())
+        .then(estados => {
+            // Limpa a opção de "Carregando..."
+            estadoSelect.innerHTML = '<option value="" disabled selected>Selecione um estado</option>';
+            
+            estados.forEach(estado => {
+                const option = document.createElement('option');
+                option.value = estado.sigla; // Usamos a sigla (UF) como valor
+                option.textContent = estado.nome;
+                estadoSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Erro ao carregar os estados:', error);
+            estadoSelect.innerHTML = '<option value="">Erro ao carregar estados</option>';
+        });
+
+    // 2. Adiciona um "ouvinte" para quando o estado for alterado
+    estadoSelect.addEventListener('change', () => {
+        const estadoUF = estadoSelect.value;
+
+        // Limpa e desabilita o select de municípios enquanto carrega
+        municipioSelect.innerHTML = '<option value="">Carregando municípios...</option>';
+        municipioSelect.disabled = true;
+
+        if (!estadoUF) {
+            municipioSelect.innerHTML = '<option value="">Primeiro, selecione um estado</option>';
+            return;
+        }
+
+        // URL da API do IBGE para municípios de um estado específico
+        const urlMunicipios = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoUF}/municipios`;
+
+        // 3. Busca e popula os municípios do estado selecionado
+        fetch(urlMunicipios)
+            .then(res => res.json())
+            .then(municipios => {
+                // Limpa a opção de "Carregando..."
+                municipioSelect.innerHTML = '<option value="" disabled selected>Selecione o município</option>';
+                
+                municipios.forEach(municipio => {
+                    const option = document.createElement('option');
+                    option.value = municipio.nome; // Usamos o nome do município como valor
+                    option.textContent = municipio.nome;
+                    municipioSelect.appendChild(option);
+                });
+
+                // Habilita o select de municípios
+                municipioSelect.disabled = false;
+            })
+            .catch(error => {
+                console.error('Erro ao carregar os municípios:', error);
+                municipioSelect.innerHTML = '<option value="">Erro ao carregar municípios</option>';
+            });
+    });
+});
+//</script>
