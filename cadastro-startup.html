@@ -28,10 +28,10 @@
                 </li>
                 <li>
                     <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="startups-submenu"><span>Startup</span></button>
-                    <ul id="startups-submenu" class="submenu" hidden>
+                    <!--<ul id="startups-submenu" class="submenu" hidden>
                         <li><a href="cadastro-startup.html">Cadastro de Startup</a></li>
-                    </ul>
-                </li>
+                    </ul> -->
+                </li>  
                 <li>
                     <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="eventos-submenu"><span>Eventos</span></button>
                     <ul id="eventos-submenu" class="submenu" hidden>
@@ -127,7 +127,25 @@
                     <textarea id="mainProductService" name="mainProductService" rows="3" required></textarea>
                 </div>
                 <div class="form-group">
+                    <!-- Campo de Estado (agora é um select) -->
+                <div class="form-group">
+                    <label for="estado">Estado da Startup:*</label>
+                    <select id="estado" name="estado" required>
+                        <option value="" disabled selected>Carregando estados...</option>
+                        <!-- Os estados serão preenchidos via JavaScript -->
+                    </select>
+                </div>
+
+                <!-- Campo de Município (será populado com base no estado) -->
+                <div class="form-group">
                     <label for="municipio">Município da Startup:*</label>
+                    <select id="municipio" name="municipio" required disabled>
+                        <option value="">Primeiro, selecione um estado</option>
+                        <!-- Os municípios serão preenchidos via JavaScript -->
+                    </select>
+                </div>
+
+                    <!--<label for="municipio">Município da Startup:*</label>
                     <select id="municipio" name="municipio" required>
                         <option value="">Selecione o município</option>
                         <option value="campos_goytacazes">Campos dos Goytacazes</option>
@@ -143,7 +161,7 @@
                 <div class="form-group">
                     <label for="estado">Estado da Startup:*</label>
                     <input type="text" id="estado" name="estado" required value="Rio de Janeiro"> <!-- Pode ser um select se houver muitos estados -->
-                </div>
+                <!--</div> -->
                 <div class="form-group">
                     <label for="targetAudience">Público-alvo:*</label>
                     <select id="targetAudience" name="targetAudience" required>
@@ -178,29 +196,29 @@
                     <label for="startupClassification">Classificação da Startup:*</label>
                     <select id="startupClassification" name="startupClassification" required>
                         <option value="">Selecione a classificação</option>
-                        <option value="fintech">1-Fintech</option>
-                        <option value="edtech">2-Edtechs</option>
-                        <option value="healthtech">3-Healthtechs</option>
-                        <option value="hrtech">4-HR Techs</option>
-                        <option value="foodtech">5-Foodtech</option>
-                        <option value="lawtech">6-Lawtech</option>
-                        <option value="proptech">7-Proptech</option>
-                        <option value="agrotech">8-Agrotech</option>
-                        <option value="energytech">9-Energytech</option>
-                        <option value="construtech">10-Construtech</option>
-                        <option value="insurtech">11-Insurtech</option>
-                        <option value="sporttech">12-Sporttech</option>
-                        <option value="govtech">13-Govtech</option>
-                        <option value="retailtech">14-Retailtech</option>
-                        <option value="adtech">15-Adtech</option>
-                        <option value="cleantech">17-Cleantech</option>
-                        <option value="nanotech">18-Nanotech</option>
-                        <option value="funtech">19-Funtech</option>
-                        <option value="fashiontech">20-Fashiontech</option>
-                        <option value="biotech">21-Biotech</option>
-                        <option value="indtech">22-Indtech</option>
-                        <option value="regtech">23-Regtech</option>
-                        <option value="outra_classificacao">24-Outra</option>
+                        <option value="fintech">1-Fintech - Tecnologias que oferecem serviços e produtos financeiros </option>
+                        <option value="edtech">2-Edtechs - Tecnologias que oferecem soluções tecnológicas no setor da educação</option>
+                        <option value="healthtech">3-Healthtechs - Tecnologias que oferecem soluções no setor de saúde e bem estar </option>
+                        <option value="hrtech">4-HR Techs - Tecnologias que oferecem soluções para o setor de recursos humanos </option>
+                        <option value="foodtech">5-Foodtech - Tecnologias que oferecem soluções do setor alimentício </option>
+                        <option value="lawtech">6-Lawtech - Tecnologias que oferecem serviços tecnológicos na área jurídica </option>
+                        <option value="proptech">7-Proptech - Tecnologias que oferecem soluções para o setor imobiliário </option>
+                        <option value="agrotech">8-Agrotech - Tecnologias que oferecem soluções para o setor agronegócio </option>
+                        <option value="energytech">9-Energytech - Tecnologias que oferecem soluções para o setor de energia </option>
+                        <option value="construtech">10-Construtech - Tecnologias que oferecem soluções para o setor de construção </option>
+                        <option value="insurtech">11-Insurtech - Tecnologias que oferecem soluções para o setor de seguros </option>
+                        <option value="sporttech">12-Sporttech - Tecnologias que oferecem soluções para o setor de esportes </option>
+                        <option value="govtech">13-Govtech - Tecnologias que oferecem soluções para o setor de administração pública </option>
+                        <option value="retailtech">14-Retailtech - Tecnologias que oferecem soluções para o setor de varejista</option>
+                        <option value="adtech">15-Adtech - Tecnologias que oferecem soluções para o setor de marketing digital</option>
+                        <option value="cleantech">17-Cleantech - Tecnologias que oferecem soluções para o setor ambiental </option>
+                        <option value="nanotech">18-Nanotech - Tecnologias que oferecem soluções para o setor de nanotecnologia </option>
+                        <option value="funtech">19-Funtech - Tecnologias que oferecem soluções para o setor de entretenimento </option>
+                        <option value="fashiontech">20-Fashiontech - Tecnologias que oferecem soluções para o setor de moda </option>
+                        <option value="biotech">21-Biotech - Tecnologias que oferecem soluções para o setor de biotecnologia </option>
+                        <option value="indtech">22-Indtech - Tecnologias que oferecem soluções para o setor industrial </option>
+                        <option value="regtech">23-Regtech - Tecnologias que oferecem soluções para o setor de regulamentação </option>
+                        <option value="outra_classificacao">24-Outra - Tecnologias que oferecem soluções para outros setores </option>
                     </select>
                 </div>
                 <div class="form-group">
