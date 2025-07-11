@@ -999,3 +999,25 @@ document.addEventListener('DOMContentLoaded', function () {
         height: 280px; /* Pode aumentar um pouco a altura se for 1 coluna */
     }
 }
+
+/* Esta parte abaixo é responsável por deixar a  imagem dentro da pagina eocossistema centralizada e com 
+responsividade */
+
+.image-container {
+    text-align: center; /* Centraliza o texto da legenda */
+    margin: 2.5rem 0; /* Adiciona um espaço vertical generoso */
+}
+
+.image-container img {
+    display: block; /* Essencial para que a margem automática funcione */
+    margin: 0 auto 0.5rem auto; /* Centraliza a imagem horizontalmente e adiciona uma pequena margem inferior */
+    max-width: 750px; /* Define um tamanho máximo para a imagem em telas grandes */
+    width: 100%;      /* Faz a imagem ser responsiva e se ajustar a telas menores */
+    height: auto;     /* Mantém a proporção da imagem ao redimensionar */
+}
+
+.image-caption {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
